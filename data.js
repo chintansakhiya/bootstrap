@@ -1,29 +1,43 @@
 
 
  
-const api_url ="http://localhost:3000/api/v1/movies";
   
 // Defining async function
 async function getapi(url) {
     // Storing response
     let response = await fetch(url);
-   
+    
     
     // Storing data in form of JSON
     var data = await response.json();
     console.log(data);
-   
+    
     show(data);
 }
 // Calling that async function
-getapi(api_url);
+
+function getname(){
+    
+    
+    var api_url ="http://localhost:3000/api/v1/movies/";
+    let name=document.getElementById("name").value;
+    console.log(name)
+    if (name!=""){
+
+        api_url+="?name="
+    }
+    api_url+=name
+    console.log(api_url)
+    
+    getapi(api_url);
+}
   
  
 // Function to define innerHTML for HTML table
 function show(data) {
     let tab = 
         `<thead class="table-dark"><tr>
-          <th scope="col">Name</th>
+          <th scope="col">ID</th>
           <th scope="col">original_title</th>
           <th scope="col">genres</th>
           <th scope="col">production_companies</th>
