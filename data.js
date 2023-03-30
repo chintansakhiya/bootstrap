@@ -2,7 +2,7 @@
 
 // for (;true;) {
 //     console.log(index)
-    
+
 // }
 
 // Defining async function
@@ -38,12 +38,13 @@ function getname() {
 function show(data) {
     let tab =
         `<thead class="table-dark"><tr>
-          <th scope="col">ID</th>
-          <th scope="col">original_title</th>
-          <th scope="col">genres</th>
-          <th scope="col">production_companies</th>
-         </tr></thead>`;
+        <th scope="col">ID</th>
+        <th scope="col">original_title</th>
+        <th scope="col">genres</th>
+        <th scope="col">production_companies</th>
+        </tr></thead>`;
 
+    document.getElementById("data-not-found").innerHTML = ""
     // Loop to access all rows 
     if (data.data !== null) {
 
@@ -62,9 +63,9 @@ function show(data) {
             const td2 = document.createElement("td");
             const td3 = document.createElement("td");
             const td4 = document.createElement("td");
-            // element.classList.add("my-class");
-            th.scope="row";
-            
+ 
+            th.scope = "row";
+
             th.textContent = r.id;
             tr.appendChild(th);
             td2.textContent = r.original_title;
@@ -73,27 +74,26 @@ function show(data) {
             tr.appendChild(td3);
             td4.textContent = r.production_companies;
             tr.appendChild(td4);
-            
+
             tbody.appendChild(tr);
 
 
         }
         x.appendChild(tbody);
-    }else{
-        document.getElementById("data-not-found").innerHTML="data not found"
-        document.getElementById("employees").innerHTML=""
+    } else {
+        document.getElementById("data-not-found").innerHTML = "data not found"
+        document.getElementById("employees").innerHTML = ""
     }
-     
+
     // Setting innerHTML as tab variable
 }
 
-let person={
-    name:"chintan",
-    surname:"sakhiya"
+let person = {
+    name: "chintan",
+    surname: "sakhiya"
 }
 
-let x =["a","b","c",2]
-let y =x
-y[0]="change"
+let x = ["a", "b", "c", 2]
+let y = x
+y[0] = "change"
 console.log(x)
- 
