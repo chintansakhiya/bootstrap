@@ -1,6 +1,9 @@
 
 
-
+// for (;true;) {
+//     console.log(index)
+    
+// }
 
 // Defining async function
 async function getapi(url) {
@@ -18,8 +21,7 @@ async function getapi(url) {
 
 function getname() {
 
-
-    let api_url = "http://localhost:3000/api/v1/movies/";
+    let api_url = "http://localhost:3000/api/v1/movies";
     let name = document.getElementById("name").value;
 
     if (name !== "") {
@@ -77,7 +79,21 @@ function show(data) {
 
         }
         x.appendChild(tbody);
+    }else{
+        document.getElementById("data-not-found").innerHTML="data not found"
+        document.getElementById("employees").innerHTML=""
     }
-    tab += `</tbody>`
+     
     // Setting innerHTML as tab variable
 }
+
+let person={
+    name:"chintan",
+    surname:"sakhiya"
+}
+
+let x =["a","b","c",2]
+let y =x
+y[0]="change"
+console.log(x)
+ 
