@@ -1,27 +1,40 @@
 
 
-// for (;true;) {
-//     console.log(index)
+// for (let i = 0; true; i++) {
+//     console.log(i)
 
 // }
 
-// Defining async function
+ 
+
+
+
 async function getapi(url) {
-    // Storing response
-    let response = await fetch(url);
+    try {
+        let response = await fetch(url);
 
+        console.log(response);
 
-    // Storing data in form of JSON
-    var data = await response.json();
-    console.log(data);
+        var data = await response.json();
+        console.log(data);
 
-    show(data);
+        show(data);
+    }
+
+    catch (error) {
+        document.getElementById("data-not-found").innerHTML = error;
+
+    }
 }
-// Calling that async function
+
+
 
 function getname() {
 
-    let api_url = "http://localhost:3000/api/v1/movies";
+    let api_url = "http://10.0.8.190:3000/api/v1/movies?limit=100&";
+
+
+
     let name = document.getElementById("name").value;
 
     if (name !== "") {
@@ -33,15 +46,13 @@ function getname() {
     getapi(api_url);
 }
 
-
-// Function to define innerHTML for HTML table
 function show(data) {
     let tab =
         `<thead class="table-dark"><tr>
         <th scope="col">ID</th>
-        <th scope="col">original_title</th>
-        <th scope="col">genres</th>
-        <th scope="col">production_companies</th>
+        <th scope="col">Title</th>
+        <th scope="col">Genres</th>
+        <th scope="col">Companies</th>
         </tr></thead>`;
 
     document.getElementById("data-not-found").innerHTML = ""
@@ -52,27 +63,36 @@ function show(data) {
         const tbody = document.createElement("tbody");
         let x = document.getElementById("employees");
         for (let r of data.data) {
-            //         tab += `<tr> 
-            //     <th scope="row">${r.id} </th>
-            //     <td>${r.original_title}</td>
-            //      <td>${r.genres}</td> 
-            //      <td>${r.runtime}</td>          
-            // </tr>`;
+
             const tr = document.createElement("tr");
             const th = document.createElement("th");
             const td2 = document.createElement("td");
             const td3 = document.createElement("td");
             const td4 = document.createElement("td");
- 
+
             th.scope = "row";
 
             th.textContent = r.id;
             tr.appendChild(th);
+
             td2.textContent = r.original_title;
             tr.appendChild(td2);
-            td3.textContent = r.genres;
+
+            genres = JSON.parse(r.genres);
+            let temp = "";
+            for (const iterator of genres) {
+                temp += iterator.name + "<br>"
+            }
+            td3.innerHTML = temp;
             tr.appendChild(td3);
-            td4.textContent = r.production_companies;
+
+
+            let temp2 = "";
+            companies = JSON.parse(r.production_companies);
+            for (const iterator of companies) {
+                temp2 += iterator.name + "<br>"
+            }
+            td4.innerHTML = temp2
             tr.appendChild(td4);
 
             tbody.appendChild(tr);
@@ -85,8 +105,8 @@ function show(data) {
         document.getElementById("employees").innerHTML = ""
     }
 
-    // Setting innerHTML as tab variable
 }
+//----------------------------------------------------------------------------------------------------------------------
 
 let person = {
     name: "chintan",
@@ -97,3 +117,36 @@ let x = ["a", "b", "c", 2]
 let y = x
 y[0] = "change"
 console.log(x)
+
+
+
+function Car(id) {
+    this.carId = id;
+    this.start = function () {
+        console.log('start:' + this.carId);
+    }
+}
+let car = new Car(123);
+car.start();
+
+let jsonIn =`[
+{"carId" : 456},
+{"carId" : 789}]`
+
+let carIds = JSON.parse(jsonIn);
+console.log(carIds);
+
+
+let xyz= function xy(){
+    let person = {
+        name: "chintan",
+        surname: "sakhiya",
+        pr: ()=> {
+            console.log("name")
+            
+        }
+    }
+    person.pr()
+    
+}
+xyz()
