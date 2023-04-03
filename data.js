@@ -31,10 +31,7 @@ async function getapi(url) {
 
 function getname() {
 
-    let api_url = "http://10.0.8.190:3000/api/v1/movies?limit=100&";
-
-
-
+    let api_url = "http://localhost:3000/api/v1/movies";
     let name = document.getElementById("name").value;
 
     if (name !== "") {
@@ -74,25 +71,11 @@ function show(data) {
 
             th.textContent = r.id;
             tr.appendChild(th);
-
             td2.textContent = r.original_title;
             tr.appendChild(td2);
-
-            genres = JSON.parse(r.genres);
-            let temp = "";
-            for (const iterator of genres) {
-                temp += iterator.name + "<br>"
-            }
-            td3.innerHTML = temp;
+            td3.textContent = r.genres;
             tr.appendChild(td3);
-
-
-            let temp2 = "";
-            companies = JSON.parse(r.production_companies);
-            for (const iterator of companies) {
-                temp2 += iterator.name + "<br>"
-            }
-            td4.innerHTML = temp2
+            td4.textContent = r.production_companies;
             tr.appendChild(td4);
 
             tbody.appendChild(tr);
