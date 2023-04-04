@@ -71,11 +71,20 @@ function show(data) {
 
             th.textContent = r.id;
             tr.appendChild(th);
+            
             td2.textContent = r.original_title;
             tr.appendChild(td2);
-            td3.textContent = r.genres;
-            tr.appendChild(td3);
-            td4.textContent = r.production_companies;
+            
+           let genres=JSON.parse(r.genres)
+            genres.forEach(element => {
+                td3.innerHTML+=element.name+'<br>' 
+            }); 
+           tr.appendChild(td3);    
+           
+           let companie=JSON.parse(r.production_companies)
+           companie.forEach(element => {
+                td4.innerHTML+=element.name+'<br>' 
+            });
             tr.appendChild(td4);
 
             tbody.appendChild(tr);
