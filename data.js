@@ -5,18 +5,18 @@
 
 // }
 
+
  
+
 
 
 
 async function getapi(url) {
     try {
         let response = await fetch(url);
-
         console.log(response);
-
         var data = await response.json();
-        console.log(data);
+        console.log("data");
 
         show(data);
     }
@@ -31,7 +31,7 @@ async function getapi(url) {
 
 function getname() {
 
-    let api_url = "http://localhost:3000/api/v1/movies";
+    let api_url = "http://10.0.8.190:3000/api/v1/movies";
     let name = document.getElementById("name").value;
 
     if (name !== "") {
@@ -105,14 +105,14 @@ console.log(x)
 
 function Car(id) {
     this.carId = id;
-    this.start = function () {
+     this.start = function () {
         console.log('start:' + this.carId);
     }
 }
 let car = new Car(123);
 car.start();
 
-let jsonIn =`[
+let jsonIn = `[
 {"carId" : 456},
 {"carId" : 789}]`
 
@@ -120,16 +120,26 @@ let carIds = JSON.parse(jsonIn);
 console.log(carIds);
 
 
-let xyz= function xy(){
+let xyz = function xy() {
     let person = {
         name: "chintan",
         surname: "sakhiya",
-        pr: ()=> {
+        pr: () => {
             console.log("name")
-            
+
         }
     }
     person.pr()
-    
+
 }
-xyz()
+
+function main() {
+
+    var abcd = "dsds"
+
+
+    console.log(abcd)
+}
+main()
+
+ 
